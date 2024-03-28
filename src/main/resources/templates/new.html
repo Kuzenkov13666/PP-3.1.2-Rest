@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            margin-right: 5px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Add User</h1>
+
+<form action="/admin/users/add" method="post" th:object="${user}">
+    <label for="username">Name:</label>
+    <input type="text" th:field="*{username}" id="username" required><br><br>
+    <label for="age">Age:</label>
+    <input type="text" th:field="*{age}" id="age" required><br><br>
+    <label for="email">Email:</label>
+    <input type="text" th:field="*{email}" id="email" required><br><br>
+    <label for="password">Password:</label>
+    <input type="text" th:field="*{password}" id="password" required><br><br>
+
+    <label>Role:</label><br/>
+    <input type="checkbox" th:field="*{roles}" id="role_admin" value="1"/>
+    <label for="role_admin">Admin</label><br/>
+    <input type="checkbox" th:field="*{roles}" id="role_user" value="2"/>
+    <label for="role_user">User</label><br/>
+
+    <button type="submit">Save</button>
+</form>
+<form action="/admin/users" method="get">
+    <button type="submit">Back to Users</button>
+</form>
+<div th:insert="~{Fragments :: header }"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            margin-right: 5px;
+        }
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit User</h1>
+
+<form th:object="${user}" action="@{/admin/users/edit/{id}(id=${user.id})}"
+      th:method="post" th:action="@{/admin/users/edit/{id}(id=${user.id})}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="username">Name:</label>
+    <input type="text" id="username" th:field="*{username}" required><br><br>
+    <label for="age">Age:</label>
+    <input type="text" id="age" th:field="*{age}" required><br><br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" th:field="*{email}" required><br><br>
+    <label for="password">Password:</label>
+    <input type="text" id="password" th:field="*{password}" required><br><br>
+    <label>Role:</label><br/>
+    <input type="checkbox" th:field="*{roles}" id="role_admin" value="1"/>
+    <label for="role_admin">Admin</label><br/>
+    <input type="checkbox" th:field="*{roles}" id="role_user" value="2"/>
+    <label for="role_user">User</label><br/>
+
+    <button type="submit">Update</button>
+
+</form>
+<form action="/admin/users" method="get">
+    <button type="submit">Back to Users</button>
+</form>
+<div th:insert="~{Fragments :: header }"></div>
+</body>
+</html>
