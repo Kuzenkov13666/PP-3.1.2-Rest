@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<div th:fragment="header">
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+<div th:fragment="header1">
+    <form action="/logout" method="POST">
+        <button type="submit">Log In</button>
+    </form>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Spring Security Example</title>
-    <h1>User, welcome spring boot security page!</h1>
+    <h1>User</h1>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,6 +59,7 @@
     </style>
 </head>
 <body>
+<h1>User</h1>
 
     <table>
         <thead>
@@ -77,6 +78,9 @@
         </tbody>
     </table>
 
+<form action="/admin/users" method="get">
+    <button type="submit">USERS</button>
+</form>
 <br>
 <div th:insert="~{Fragments :: header }"></div>
 

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example</title>
-    <h1>User, welcome spring boot security page!</h1>
+    <title>Users</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,26 +57,34 @@
     </style>
 </head>
 <body>
+<h1>Users</h1>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.age}"></td>
-            <td th:text="${user.email}"></td>
-        </tr>
-        </tbody>
-    </table>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/admin/users/edit/{id}(id=${user.id})}">Edit</a>
+            <a th:href="@{/admin/users/delete/{id}(id=${user.id})}">Delete</a>
 
-<br>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form action="/admin/users/add">
+    <button type="submit">Add User</button>
+</form>
+
 <div th:insert="~{Fragments :: header }"></div>
-
 </body>
 </html>
